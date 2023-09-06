@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('../partials/head.ejs') %>
+    </head>
+    <body>
+        <header>
+            <%- include('../partials/header.ejs') %>
+        </header>
+        <h2>Enter the information about your post below, and hit add. When done, hit create.</h2>
+        <textarea rows="25">
+            <%= content %>
+        </textarea>
+        <form action="/restart" method="post">
+            <input type="submit" value="Create New"/>
+        </form>
+    </body>
+</html>

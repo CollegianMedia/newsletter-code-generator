@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('../partials/head.ejs') %>
+    </head>
+    <body>
+        <header>
+            <%- include('../partials/header.ejs') %>
+        </header>
+        <h2>Enter the information about your post below, and hit add. When done, hit create.</h2>
+        <form action="/submit" method="post">
+            <label for="title">Article title</label>
+            <input type="text" id="title" name="title" placeholder="Enter title here..." required/>
+            <label for="url">Article URL</label>
+            <input type="text" id="url" name="url" placeholder="Enter url here..." required/>
+            <label for="imageurl">Article image URL (drag image from article web page or right click and copy link)</label>
+            <input type="text" id="imageurl" name="imageurl" placeholder="Enter image url here..." required/>
+            <label for="description">Article description</label>
+            <textarea rows="10" id="description" name="description"></textarea>
+            <input type="submit" value="Add Article"/>
+        </form>
+        <h2>Posts Added</h2>
+        <% postlist.forEach(post=>{%>
+          <h3><%= post.title %></h3>  
+        <%});%>
+        <form action="/create" method="post">
+            <input type="submit" value="Generate Code"/>
+        </form>
+    </body>
+</html>
