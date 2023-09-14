@@ -61,5 +61,13 @@ app.post('/create', (req, res)=>{
 });
 
 app.post('/restart', (req, res)=>{
-   res.render('pages/index', {postlist: []}); 
+   postlist = [];
+   res.render('pages/index', {postlist: postlist}); 
 });
+
+app.post('/remove', (req, res)=>{
+   var index = req.body.index;
+   postlist.splice(index, 1);
+   res.render('pages/index', {postlist: postlist});
+});
+

@@ -13,18 +13,36 @@
             <input type="text" id="title" name="title" placeholder="Enter title here..." required/>
             <label for="url">Article URL</label>
             <input type="text" id="url" name="url" placeholder="Enter url here..." required/>
-            <label for="imageurl">Article image URL (drag image from article web page or right click and copy link)</label>
+            <label for="imageurl">Article image URL</label>
             <input type="text" id="imageurl" name="imageurl" placeholder="Enter image url here..." required/>
             <label for="description">Article description</label>
             <textarea rows="10" id="description" name="description"></textarea>
             <input type="submit" value="Add Article"/>
         </form>
         <h2>Posts Added</h2>
+
+        <% var index = 0; %>
         <% postlist.forEach(post=>{%>
-          <h3><%= post.title %></h3>  
+          <notice>
+          <h3 id ="<%= index %>"><%= post.title %></h3>
+          <form action="/remove" method="post">
+            <input type="hidden" id="index" name="index" value="<%= index %>"/>
+            <input type="submit" value="remove"/>
+          </form>
+          </notice>
         <%});%>
         <form action="/create" method="post">
             <input type="submit" value="Generate Code"/>
         </form>
+	<form action="/restart" method="post">
+	    <input type="submit" value="Clear"/>
+	</form>
+	<h2>How to Use</h2>
+	<notice>
+        Whoever is generating the code (IT Person, EIC, division head, etc.) will enter in the information of the articles they want to add. First you will add the article title and the article link into the first two text fields (Article title and Article URL respectively.) <br><br>
+        Then, you will add the link to the image for the article. This can be done by either dragging the image from the article into the text box below Article image URL, or by right clicking the image, clicking "copy link" and pasting it in the text box.<br><br>
+        Under Article description, you can either write a quick little exerpt about the article, or just copy a small portion into there.<br><br>
+        When you are done with an article, hit "Add article" to add it to the list. At this point, you can add more articles by repeating the steps above. To remove an article, click "remove" under the article you want to remove. To start over, hit the "clear" button. When you are done adding articles, click "Generate code" to generate the code for the articles.
+	</notice>
     </body>
 </html>
